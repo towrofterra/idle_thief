@@ -6,17 +6,46 @@ import java.util.HashMap;
  * A Player has Resources & Generators
  */
 public class Player {
-    public HashMap<IResource, Integer> resources;
-    public HashMap<IGenerator, Integer> generators;
+
+    //////////////
+    /// FIELDS ///
+    //////////////
+
+    private HashMap<IResource, Integer> resources;
+    private HashMap<IGenerator, Integer> generators;
     String name;
 
-    /**
-     * Sets the resources and generators of this Player to zero.
-     */
-    private void zeroResourcesAndGenerators() {
-        this.resources = new HashMap<>();
-        this.generators = new HashMap<>();
+    ///////////////////////
+    /// GETTERS/SETTERS ///
+    ///////////////////////
+
+    public HashMap<IResource, Integer> getResources() {
+        return resources;
     }
+
+    public void setResources(HashMap<IResource, Integer> resources) {
+        this.resources = resources;
+    }
+
+    public HashMap<IGenerator, Integer> getGenerators() {
+        return generators;
+    }
+
+    public void setGenerators(HashMap<IGenerator, Integer> generators) {
+        this.generators = generators;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    ////////////////////
+    /// CONSTRUCTORS ///
+    ////////////////////
 
     /**
      * Default Player constructor
@@ -32,6 +61,25 @@ public class Player {
     public Player(String name) {
         this.name = name;
         zeroResourcesAndGenerators();
+    }
+
+    ///////////////
+    /// UTILITY ///
+    ///////////////
+
+
+
+    ////////////////////////////////
+    /// RESOURCES AND GENERATORS ///
+    ////////////////////////////////
+
+
+    /**
+     * Sets the resources and generators of this Player to zero.
+     */
+    public void zeroResourcesAndGenerators() {
+        this.resources = new HashMap<>();
+        this.generators = new HashMap<>();
     }
 
     /**
