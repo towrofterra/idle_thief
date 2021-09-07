@@ -2,16 +2,24 @@ import javax.swing.*;
 
 public class Game {
     int tick = 0;
-    private JPanel rootPanel;
+    private JTabbedPane rootPanel;
     private JLabel name;
     private JButton steal$10Button;
     private JProgressBar progressBar1;
-    private JProgressBar progressBar3;
-    private JButton buyButton;
-    private JButton button3;
+    private JButton $100Button;
     private JLabel Generators;
     private JLabel Resources;
-//    Player p;
+    private JButton steal$5Button;
+    private JProgressBar progressBar2;
+    private JButton stealACookieFromButton;
+    private JProgressBar progressBar4;
+    private JLabel youAreAPennilessLabel;
+    private JButton $500Button;
+    private JButton $50000Button;
+    private JButton button3;
+    private JButton $10000Button;
+    private JButton $5000Button;
+    //    Player p;
 
     public static void main(String[] args){
         JFrame frame = new JFrame("Idle Thief");
