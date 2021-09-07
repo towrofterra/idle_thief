@@ -21,8 +21,9 @@ public class Game {
     private JButton $5000Button;
     //    Player p;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         JFrame frame = new JFrame("Idle Thief");
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
         frame.setContentPane(new Game().rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
