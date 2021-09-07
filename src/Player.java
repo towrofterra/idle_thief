@@ -84,6 +84,7 @@ public class Player {
             str.append("\t").append(gen.getType()).append(": ").append(numGens).append("\n");
         }
         // Add resource info
+        str.append("Resources:\n");
         for(IResource res : resources.keySet()) {
             int num = resources.get(res);
             str.append("\t").append(res.getType()).append(": ").append(num).append("\n");
