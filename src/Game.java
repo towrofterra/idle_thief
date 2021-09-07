@@ -48,7 +48,7 @@ public class Game {
     //  FIELDS  //
     //////////////
     private int tick = 0;
-    private Player p;
+    private Player player;
 
     //////////////////
     // CONSTRUCTORS //
@@ -57,20 +57,26 @@ public class Game {
      * Convenience default constructor
      */
     public Game() {
-        this.p = new Player();
+        this.player = new Player();
     }
 
     /**
      * Construct a game with the given player
      */
-    public Game(Player p) {
-        this.p = p;
+    public Game(Player player) {
+        this.player = player;
     }
 
+    ////////////
+    //  FLOW  //
+    ////////////
 
-    // Resource/Generator instantiation
-    // CashResource cashResource = new CashResource();
-    // Generator<CashResource> cashGen = new Generator<>(cashResource);
-
+    /**
+     * Moves this game 1 tick forward
+     */
+    public void tick() {
+        this.tick++;
+        player.tick();
+    }
 
 }

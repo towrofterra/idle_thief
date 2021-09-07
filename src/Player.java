@@ -17,19 +17,19 @@ public class Player {
     /// GETTERS/SETTERS ///
     ///////////////////////
 
-    public HashMap<IResource, Integer> getResources() {
+    private HashMap<IResource, Integer> getResources() {
         return resources;
     }
 
-    public void setResources(HashMap<IResource, Integer> resources) {
+    private void setResources(HashMap<IResource, Integer> resources) {
         this.resources = resources;
     }
 
-    public HashMap<IGenerator, Integer> getGenerators() {
+    private HashMap<IGenerator, Integer> getGenerators() {
         return generators;
     }
 
-    public void setGenerators(HashMap<IGenerator, Integer> generators) {
+    private void setGenerators(HashMap<IGenerator, Integer> generators) {
         this.generators = generators;
     }
 
@@ -141,6 +141,15 @@ public class Player {
         } else {
             this.resources.put(resource, num);
         }
+    }
+
+    /**
+     * Gets the value of the given resource
+     * @param resource The resource to value
+     * @return The value of the given resource, or -1 if the resource is not found.
+     */
+    public int getResourceStatus(IResource resource) {
+        return this.resources.getOrDefault(resource, -1);
     }
 
     /**
