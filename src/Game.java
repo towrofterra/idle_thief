@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Game {
 
@@ -68,7 +70,7 @@ public class Game {
     }
 
     ////////////
-    //  FLOW  //
+    //  TIME  //
     ////////////
 
     /**
@@ -77,6 +79,27 @@ public class Game {
     public void tick() {
         this.tick++;
         player.tick();
+    }
+
+    /**
+     * @return The current tick of this Game
+     */
+    public int getCurrTick() {
+        return this.tick;
+    }
+
+    public void startTheClock() throws IllegalStateException {
+        long period = 1000;
+        if (this.tick != 0) {
+            throw new IllegalStateException("Clock cannot be started at a non-zero value.");
+        }
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                tick();
+            }
+        }, 0, period);
+
     }
 
 }
