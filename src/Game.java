@@ -22,41 +22,55 @@ public class Game {
     private JButton $XButton;
     private JButton $10000Button;
     private JButton $5000Button;
+    private JLabel cash;
 
-
-    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    /**
+     * Handles swing window setup
+     */
+    public void swingSetup() {
         JFrame frame = new JFrame("Idle Thief");
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+
+        // Theming
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         frame.setContentPane(new Game().rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    }
 
+    //////////////
+    //  FIELDS  //
+    //////////////
+    private int tick = 0;
+    private Player p;
 
-        Player p1 = new Player("Jake");
-        System.out.println(p1.getStatus());
-
-        CashResource cash = new CashResource();
-        Generator<CashResource> cashGen = new Generator<>(cash);
-        p1.addGenerator(cashGen);
-        p1.addResources(cash, 10);
-        p1.tick();
-        p1.addGenerator(cashGen);
-        p1.tick();
-        p1.tick();
-        p1.addGenerators(cashGen, 100);
-        p1.tick();
-        p1.tick();
-        p1.tick();
-        p1.tick();
-
+    //////////////////
+    // CONSTRUCTORS //
+    //////////////////
+    /**
+     * Convenience default constructor
+     */
+    public Game() {
+        this.p = new Player();
     }
 
     /**
-     * Adds the given player to the game
-     * @param p The player to be added
+     * Construct a game with the given player
      */
-    public void addPlayer(Player p) {
-
+    public Game(Player p) {
+        this.p = p;
     }
+
+
+    // Resource/Generator instantiation
+    // CashResource cashResource = new CashResource();
+    // Generator<CashResource> cashGen = new Generator<>(cashResource);
+
+
 }
