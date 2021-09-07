@@ -1,7 +1,10 @@
 import javax.swing.*;
 
 public class Game {
-    int tick = 0;
+
+    /////////////////
+    // SWING STUFF //
+    /////////////////
     private JTabbedPane rootPanel;
     private JLabel name;
     private JButton steal$10Button;
@@ -16,10 +19,10 @@ public class Game {
     private JLabel youAreAPennilessLabel;
     private JButton $500Button;
     private JButton $50000Button;
-    private JButton button3;
+    private JButton $XButton;
     private JButton $10000Button;
     private JButton $5000Button;
-    //    Player p;
+
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         JFrame frame = new JFrame("Idle Thief");
@@ -30,13 +33,11 @@ public class Game {
         frame.setVisible(true);
 
 
-
-
         Player p1 = new Player("Jake");
         System.out.println(p1.getStatus());
 
         CashResource cash = new CashResource();
-        Generator cashGen = new Generator(cash);
+        Generator<CashResource> cashGen = new Generator<>(cash);
         p1.addGenerator(cashGen);
         p1.addResources(cash, 10);
         p1.tick();
@@ -51,4 +52,11 @@ public class Game {
 
     }
 
+    /**
+     * Adds the given player to the game
+     * @param p The player to be added
+     */
+    public void addPlayer(Player p) {
+
+    }
 }
