@@ -4,11 +4,10 @@ public class Game {
     int tick = 0;
     private JPanel rootPanel;
     private JLabel name;
-    private JButton button1;
+    private JButton steal$10Button;
     private JProgressBar progressBar1;
-    private JProgressBar progressBar2;
     private JProgressBar progressBar3;
-    private JButton button2;
+    private JButton buyButton;
     private JButton button3;
     private JLabel Generators;
     private JLabel Resources;
