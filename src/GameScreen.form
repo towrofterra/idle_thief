@@ -2,12 +2,12 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Game">
   <tabbedpane id="7a786" binding="rootPanel">
     <constraints>
-      <xy x="20" y="20" width="824" height="387"/>
+      <xy x="20" y="20" width="842" height="387"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="27dc6" layout-manager="GridLayoutManager" row-count="10" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="27dc6" layout-manager="GridLayoutManager" row-count="10" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="16" left="16" bottom="16" right="16"/>
         <constraints>
           <tabbedpane title="Main"/>
@@ -15,17 +15,17 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="bf920" class="javax.swing.JLabel" binding="name">
+          <component id="bf920" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Name:  Jake"/>
+              <text value="Name: "/>
             </properties>
           </component>
           <component id="61450" class="javax.swing.JButton" binding="steal$10Button" default-binding="true">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Steal $10"/>
@@ -33,13 +33,13 @@
           </component>
           <component id="c9036" class="javax.swing.JProgressBar" binding="progressBar1" default-binding="true">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
           <component id="42e96" class="javax.swing.JButton" binding="steal$5Button" default-binding="true">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Steal $5"/>
@@ -47,13 +47,13 @@
           </component>
           <component id="d2bcd" class="javax.swing.JProgressBar" binding="progressBar2" default-binding="true">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
           <component id="9329d" class="javax.swing.JButton" binding="stealACookieFromButton" default-binding="true">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Steal a Cookie from a Child ($1)"/>
@@ -61,7 +61,7 @@
           </component>
           <component id="9c39b" class="javax.swing.JProgressBar" binding="progressBar4" default-binding="true">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="2" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <string value="0%"/>
@@ -70,7 +70,7 @@
           </component>
           <component id="8cdac" class="javax.swing.JLabel" binding="youAreAPennilessLabel" default-binding="true">
             <constraints>
-              <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="9" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="25"/>
               </grid>
             </constraints>
@@ -80,15 +80,15 @@
           </component>
           <component id="176d" class="javax.swing.JButton" binding="$100Button" default-binding="true">
             <constraints>
-              <grid row="5" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="3" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="$100"/>
             </properties>
           </component>
-          <component id="edfd" class="javax.swing.JLabel" binding="Generators">
+          <component id="edfd" class="javax.swing.JLabel" binding="cash_text">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -100,7 +100,7 @@
           </component>
           <component id="616dc" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="$"/>
@@ -108,7 +108,7 @@
           </component>
           <component id="a97e1" class="javax.swing.JLabel" binding="Resources">
             <constraints>
-              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -117,9 +117,9 @@
               <text value="Cash/s"/>
             </properties>
           </component>
-          <component id="a27d1" class="javax.swing.JLabel">
+          <component id="a27d1" class="javax.swing.JLabel" binding="num_gens">
             <constraints>
-              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="0"/>
@@ -127,23 +127,15 @@
           </component>
           <vspacer id="1c8a">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="16"/>
                 <maximum-size width="-1" height="16"/>
               </grid>
             </constraints>
           </vspacer>
-          <component id="31ce" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="9" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="0"/>
-            </properties>
-          </component>
           <component id="6c2e9" class="javax.swing.JLabel">
             <constraints>
-              <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="9" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <horizontalAlignment value="4"/>
@@ -153,7 +145,7 @@
           </component>
           <component id="ea606" class="javax.swing.JLabel">
             <constraints>
-              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Buy a Cash Printing Machine ($100)"/>
@@ -161,7 +153,7 @@
           </component>
           <component id="8cc7" class="javax.swing.JLabel">
             <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Hire a Pickpocket ($500)"/>
@@ -169,7 +161,7 @@
           </component>
           <component id="ffcee" class="javax.swing.JButton" binding="$500Button" default-binding="true">
             <constraints>
-              <grid row="6" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="3" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="$500"/>
@@ -177,7 +169,7 @@
           </component>
           <component id="972ec" class="javax.swing.JLabel">
             <constraints>
-              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Build a Fake Toll Booth (+city guard bribe upgrade)"/>
@@ -186,7 +178,7 @@
           </component>
           <component id="3b5ed" class="javax.swing.JButton" binding="$50000Button" default-binding="true">
             <constraints>
-              <grid row="7" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="7" column="3" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="$50,000"/>
@@ -194,7 +186,7 @@
           </component>
           <component id="34e01" class="javax.swing.JLabel">
             <constraints>
-              <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Something"/>
@@ -202,7 +194,7 @@
           </component>
           <component id="90632" class="javax.swing.JButton" binding="$XButton" default-binding="true">
             <constraints>
-              <grid row="8" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="8" column="3" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="$X"/>
@@ -210,10 +202,26 @@
           </component>
           <component id="d0972" class="javax.swing.JLabel" binding="cash">
             <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="0"/>
+            </properties>
+          </component>
+          <component id="57b5" class="javax.swing.JLabel" binding="tickVal">
+            <constraints>
+              <grid row="9" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="10c57" class="javax.swing.JLabel" binding="name">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Label"/>
             </properties>
           </component>
         </children>

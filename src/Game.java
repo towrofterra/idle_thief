@@ -3,28 +3,35 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game {
+    //////////////
+    //  FIELDS  //
+    //////////////
+    private int tick = 0;
+    private Player player;
 
     /////////////////
     // SWING STUFF //
     /////////////////
     private JTabbedPane rootPanel;
-    private JLabel name;
-    private JButton steal$10Button;
     private JProgressBar progressBar1;
-    private JButton $100Button;
-    private JLabel Generators;
-    private JLabel Resources;
-    private JButton steal$5Button;
     private JProgressBar progressBar2;
-    private JButton stealACookieFromButton;
     private JProgressBar progressBar4;
-    private JLabel youAreAPennilessLabel;
+    private JButton $100Button;
+    private JButton stealACookieFromButton;
+    private JButton steal$5Button;
+    private JButton steal$10Button;
     private JButton $500Button;
     private JButton $50000Button;
     private JButton $XButton;
     private JButton $10000Button;
     private JButton $5000Button;
+    private JLabel name;
+    private JLabel cash_text;
+    private JLabel Resources;
+    private JLabel youAreAPennilessLabel;
     private JLabel cash;
+    private JLabel tickVal;
+    private JLabel num_gens;
 
     /**
      * Handles swing window setup
@@ -40,17 +47,25 @@ public class Game {
             e.printStackTrace();
         }
 
-        frame.setContentPane(new Game().rootPanel);
+        frame.setContentPane(this.rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    //////////////
-    //  FIELDS  //
-    //////////////
-    private int tick = 0;
-    private Player player;
+    /**
+     * Updates the Swing GUI with the player's info
+     * Called every tick
+     */
+    public void updateGUI() {
+        CashResource cash = new CashResource();
+        this.num_gens.setText(Integer.toString(this.player.getNumGens(cash)));
+        this.name.setText(this.player.getName());
+        this.cash.setText(Integer.toString(this.player.getResourceStatus(new CashResource())));
+        this.tickVal.setText(Integer.toString(getCurrTick()));
+    }
+
+
 
     //////////////////
     // CONSTRUCTORS //
@@ -77,8 +92,10 @@ public class Game {
      * Moves this game 1 tick forward
      */
     public void tick() {
+        util.debug("Tick: " + tick);
         this.tick++;
         player.tick();
+        this.updateGUI();
     }
 
     /**
@@ -88,18 +105,25 @@ public class Game {
         return this.tick;
     }
 
+    /**
+     * Start the global timer
+     * @throws IllegalStateException If the timer has already been started
+     */
     public void startTheClock() throws IllegalStateException {
-        long period = 1000;
+
+        // Checks for a non-zero tick
         if (this.tick != 0) {
             throw new IllegalStateException("Clock cannot be started at a non-zero value.");
         }
+
+        // Starts up a timer every /period/ms
+        long period = 1000;
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 tick();
             }
         }, 0, period);
-
     }
 
 }

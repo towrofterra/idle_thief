@@ -16,4 +16,9 @@ public class Generator<R extends AResource> implements IGenerator {
     public R getResource() {
         return this.type;
     }
+
+    @Override
+    public boolean equals(Object anObject) {
+        return anObject instanceof Generator && this.getType().equals(((Generator)anObject).getType());
+    }
 }

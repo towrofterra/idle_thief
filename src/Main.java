@@ -7,10 +7,14 @@ public class Main {
         if(args.length != 1) {
             throw new IllegalArgumentException("Expected player name as the only argument");
         }
-        g = new Game(new Player(args[0]));
+        Player p = new Player(args[0]);
+        g = new Game(p);
         g.swingSetup();
+
+        CashResource cash = new CashResource();
+        p.addGenerator(new Generator(cash));
+
         g.startTheClock();
-        g.tick();
 
     }
 }
