@@ -61,11 +61,6 @@ public class Player {
         zeroResourcesAndGenerators();
     }
 
-    ///////////////
-    /// UTILITY ///
-    ///////////////
-
-
 
     ////////////////////////////////
     /// RESOURCES AND GENERATORS ///
@@ -173,6 +168,10 @@ public class Player {
         return 0;
     }
 
+
+    ////////////
+    /// FLOW ///
+    ////////////
     /**
      * Move this Player forward 1 tick in time
      */
@@ -198,6 +197,17 @@ public class Player {
 
         // Print status to console
         util.debug(this.getStatus());
+
+    }
+
+    /**
+     * Uses this Player's resources to buy a generator
+     * @param genTypeToBuy The IResource the new Generators will produce
+     * @param numGens The number of generators being bought
+     * @param paymentType The IResource that payment is being made in
+     * @param price The number of IResources required to be paid
+     */
+    public void buyGeneratorsWithResource(IResource genTypeToBuy, int numGens, IResource paymentType, int price) {
 
     }
 
