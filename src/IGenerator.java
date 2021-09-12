@@ -6,10 +6,4 @@ public interface IGenerator {
      */
     public String getType();
 
-    /**
-     * Get the IResource this IGenerator generates
-     * @return The IResource this IGenerator generates
-     */
-    public IResource getResource();
-
 }

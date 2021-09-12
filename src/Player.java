@@ -152,8 +152,8 @@ public class Player {
      * @param resource The generator type to find
      * @return An int representing the number of generators this Player has of the given resource.
      */
-    public int getNumGens(AResource resource) {
-        Generator aux_gen = new Generator(resource);
+    public int getNumGens(Game.RESOURCE_TYPES resource) {
+        Generator aux_gen = new Generator(resource.toString());
         for (IGenerator gen : this.generators.keySet()) {
             if (gen.equals(aux_gen)) {
                 return this.generators.get(gen);
@@ -168,10 +168,9 @@ public class Player {
      * @param targetResource The resource to value
      * @return The value of the given resource, or 0 if the resource is not found.
      */
-    public int getResourceStatus(IResource targetResource) {
-        String targetType = targetResource.getType();
-        for (IResource resource : this.resources.keySet()) {
-            if (targetType.equals(resource.getType())) {
+    public int getResourceStatus(Game.RESOURCE_TYPES targetResource) {
+        for (Game.RESOURCE_TYPES resource : this.resources.keySet()) {
+            if (targetResource.equals(resource.getType())) {
                 return resources.get(resource);
             }
         }

@@ -11,7 +11,7 @@ public class Game implements ActionListener {
     private int tick = 0;
     private Player player;
 
-    private enum RESOURCE_TYPES {
+    public enum RESOURCE_TYPES {
         CASH
     };
 
@@ -70,7 +70,7 @@ public class Game implements ActionListener {
      */
     public void updateGUI() {
         CashResource cash = new CashResource();
-        this.num_gens.setText(Integer.toString(this.player.getNumGens(cash)));
+        this.num_gens.setText(Integer.toString(this.player.getNumGens(RESOURCE_TYPES.CASH)));
         this.name.setText(this.player.getName());
         this.cash.setText(Integer.toString(this.player.getResourceStatus(new CashResource())));
         this.tickVal.setText(Integer.toString(getCurrTick()));
