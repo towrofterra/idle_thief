@@ -1,13 +1,19 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Game {
+public class Game implements ActionListener {
     //////////////
     //  FIELDS  //
     //////////////
     private int tick = 0;
     private Player player;
+
+    private enum RESOURCE_TYPES {
+        CASH
+    };
 
     /////////////////
     // SWING STUFF //
@@ -47,6 +53,11 @@ public class Game {
             e.printStackTrace();
         }
 
+        // Buttons
+        stealACookieFromButton.addActionListener(this);
+
+
+
         frame.setContentPane(this.rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -63,6 +74,11 @@ public class Game {
         this.name.setText(this.player.getName());
         this.cash.setText(Integer.toString(this.player.getResourceStatus(new CashResource())));
         this.tickVal.setText(Integer.toString(getCurrTick()));
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        this.addResources(RESOURCE_TYPES.CASH, 10);
     }
 
 
@@ -126,4 +142,17 @@ public class Game {
         }, 0, period);
     }
 
+    ////////////////////
+    // PLAYER CONTROL //
+    ////////////////////
+
+    public void addResources(RESOURCE_TYPES resourceType, int num) {
+        switch (resourceType) {
+            case CASH:
+                this.player.addResources(new CashResource(), num);
+                break;
+            default:
+                throw new IllegalArgumentException("Unrecognized resource type");
+        }
+    }
 }

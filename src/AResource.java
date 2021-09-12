@@ -6,4 +6,14 @@ public class AResource implements IResource {
     public String getType() {
         return type;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        try {
+            return this.getType().equals(((IResource) o).getType());
+        } catch (ClassCastException e) {
+            return false;
+        }
+    }
 }
