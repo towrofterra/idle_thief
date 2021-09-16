@@ -23,9 +23,9 @@ public class Game implements ActionListener {
     private JProgressBar progressBar2;
     private JProgressBar progressBar4;
     private JButton $100Button;
-    private JButton stealACookieFromButton;
-    private JButton steal$5Button;
-    private JButton steal$10Button;
+    private JButton steal1;
+    private JButton steal5;
+    private JButton steal10;
     private JButton $500Button;
     private JButton $50000Button;
     private JButton $XButton;
@@ -54,7 +54,7 @@ public class Game implements ActionListener {
         }
 
         // Buttons
-        stealACookieFromButton.addActionListener(this);
+        steal1.addActionListener(this);
 
 
 
@@ -77,7 +77,7 @@ public class Game implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+        System.out.println(e);
         this.addResources(RESOURCE_TYPES.CASH, 10);
     }
 
@@ -108,8 +108,10 @@ public class Game implements ActionListener {
      * Moves this game 1 tick forward
      */
     public void tick() {
+        // Manage local tick value
         util.debug("Tick: " + tick);
         this.tick++;
+        // Tick the player forward
         player.tick();
         this.updateGUI();
     }
@@ -128,7 +130,7 @@ public class Game implements ActionListener {
     public void startTheClock() throws IllegalStateException {
 
         // Checks for a non-zero tick
-        if (this.tick != 0) {
+        if (this.getCurrTick() != 0) {
             throw new IllegalStateException("Clock cannot be started at a non-zero value.");
         }
 
