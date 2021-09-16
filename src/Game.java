@@ -77,6 +77,7 @@ public class Game implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
         this.addResources(RESOURCE_TYPES.CASH, 10);
     }
 
@@ -146,12 +147,7 @@ public class Game implements ActionListener {
     ////////////////////
 
     public void addResources(RESOURCE_TYPES resourceType, int num) {
-        switch (resourceType) {
-            case CASH:
-                this.player.addResources(RESOURCE_TYPES.CASH, num);
-                break;
-            default:
-                throw new IllegalArgumentException("Unrecognized resource type");
-        }
+        this.player.addResources(resourceType, num);
     }
 }
+
