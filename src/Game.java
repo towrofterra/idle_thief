@@ -1,13 +1,19 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Game {
+public class Game implements ActionListener {
     //////////////
     //  FIELDS  //
     //////////////
     private int tick = 0;
     private Player player;
+
+    public enum RESOURCE_TYPES {
+        CASH
+    };
 
     /////////////////
     // SWING STUFF //
@@ -47,6 +53,11 @@ public class Game {
             e.printStackTrace();
         }
 
+        // Buttons
+        stealACookieFromButton.addActionListener(this);
+
+
+
         frame.setContentPane(this.rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -58,11 +69,16 @@ public class Game {
      * Called every tick
      */
     public void updateGUI() {
-        CashResource cash = new CashResource();
-        this.num_gens.setText(Integer.toString(this.player.getNumGens(cash)));
+        this.num_gens.setText(Integer.toString(this.player.getNumGens(RESOURCE_TYPES.CASH)));
         this.name.setText(this.player.getName());
-        this.cash.setText(Integer.toString(this.player.getResourceStatus(new CashResource())));
+        this.cash.setText(Integer.toString(this.player.getResourceStatus(RESOURCE_TYPES.CASH)));
         this.tickVal.setText(Integer.toString(getCurrTick()));
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
+        this.addResources(RESOURCE_TYPES.CASH, 10);
     }
 
 
@@ -126,4 +142,12 @@ public class Game {
         }, 0, period);
     }
 
+    ////////////////////
+    // PLAYER CONTROL //
+    ////////////////////
+
+    public void addResources(RESOURCE_TYPES resourceType, int num) {
+        this.player.addResources(resourceType, num);
+    }
 }
+
