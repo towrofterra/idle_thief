@@ -1,19 +1,15 @@
 /**
  * An AGenerator can generate the IResource it is typed with
  */
-public class Generator<R extends AResource> implements IGenerator {
+public class Generator implements IGenerator {
 
-    private R type;
+    private final Game.RESOURCE_TYPES type;
 
-    public Generator(R type) {
+    public Generator(Game.RESOURCE_TYPES type) {
         this.type = type;
     }
 
-    public String getType() {
-        return this.type.getType();
-    }
-
-    public R getResource() {
+    public Game.RESOURCE_TYPES getType() {
         return this.type;
     }
 
