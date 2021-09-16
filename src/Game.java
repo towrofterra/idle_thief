@@ -69,10 +69,9 @@ public class Game implements ActionListener {
      * Called every tick
      */
     public void updateGUI() {
-        CashResource cash = new CashResource();
         this.num_gens.setText(Integer.toString(this.player.getNumGens(RESOURCE_TYPES.CASH)));
         this.name.setText(this.player.getName());
-        this.cash.setText(Integer.toString(this.player.getResourceStatus(new CashResource())));
+        this.cash.setText(Integer.toString(this.player.getResourceStatus(RESOURCE_TYPES.CASH)));
         this.tickVal.setText(Integer.toString(getCurrTick()));
     }
 
@@ -149,7 +148,7 @@ public class Game implements ActionListener {
     public void addResources(RESOURCE_TYPES resourceType, int num) {
         switch (resourceType) {
             case CASH:
-                this.player.addResources(new CashResource(), num);
+                this.player.addResources(RESOURCE_TYPES.CASH, num);
                 break;
             default:
                 throw new IllegalArgumentException("Unrecognized resource type");

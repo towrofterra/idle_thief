@@ -11,8 +11,7 @@ public class Main {
         g = new Game(p);
         g.swingSetup();
 
-        CashResource cash = new CashResource();
-        p.addGenerator(new Generator(cash));
+        p.addGenerator(new Generator(Game.RESOURCE_TYPES.CASH));
 
         g.startTheClock();
 

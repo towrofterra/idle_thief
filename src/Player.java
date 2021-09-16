@@ -1,5 +1,4 @@
 import java.util.HashMap;
-
 /**
  * A Player has Resources & Generators
  */
@@ -9,7 +8,7 @@ public class Player {
     /// FIELDS ///
     //////////////
 
-    private HashMap<IResource, Integer> resources;
+    private HashMap<Game.RESOURCE_TYPES, Integer> resources;
     private HashMap<IGenerator, Integer> generators;
     String name;
 
@@ -17,11 +16,11 @@ public class Player {
     /// GETTERS/SETTERS ///
     ///////////////////////
 
-    private HashMap<IResource, Integer> getResources() {
+    private HashMap<Game.RESOURCE_TYPES, Integer> getResources() {
         return resources;
     }
 
-    private void setResources(HashMap<IResource, Integer> resources) {
+    private void setResources(HashMap<Game.RESOURCE_TYPES, Integer> resources) {
         this.resources = resources;
     }
 
@@ -85,9 +84,9 @@ public class Player {
         }
         // Add resource info
         str.append("Resources:\n");
-        for (IResource res : resources.keySet()) {
+        for (Game.RESOURCE_TYPES res : resources.keySet()) {
             int num = resources.get(res);
-            str.append("\t").append(res.getType()).append(": ").append(num).append("\n");
+            str.append("\t").append(res).append(": ").append(num).append("\n");
         }
         return str.toString();
     }
@@ -137,7 +136,7 @@ public class Player {
      * @param resource The resource to add
      * @param num      The amount to add.
      */
-    public void addResources(IResource resource, int num) {
+    public void addResources(Game.RESOURCE_TYPES resource, int num) {
         int currNumResources = this.getResourceStatus(resource);
         if (currNumResources > 0) {
             this.resources.put(resource, currNumResources + num);
@@ -153,7 +152,7 @@ public class Player {
      * @return An int representing the number of generators this Player has of the given resource.
      */
     public int getNumGens(Game.RESOURCE_TYPES resource) {
-        Generator aux_gen = new Generator(resource.toString());
+        Generator aux_gen = new Generator(resource);
         for (IGenerator gen : this.generators.keySet()) {
             if (gen.equals(aux_gen)) {
                 return this.generators.get(gen);
@@ -170,7 +169,7 @@ public class Player {
      */
     public int getResourceStatus(Game.RESOURCE_TYPES targetResource) {
         for (Game.RESOURCE_TYPES resource : this.resources.keySet()) {
-            if (targetResource.equals(resource.getType())) {
+            if (targetResource.equals(resource)) {
                 return resources.get(resource);
             }
         }
@@ -183,7 +182,7 @@ public class Player {
     public void tick() {
         // Each generator adds 1 to the relevant resource
         for (IGenerator generator : this.generators.keySet()) {
-            IResource type = generator.getResource();
+            Game.RESOURCE_TYPES type = generator.getType();
 
             // If the player already has the resource
             if (this.resources.containsKey(type)) {

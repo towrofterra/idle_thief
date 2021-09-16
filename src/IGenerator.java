@@ -4,6 +4,6 @@ public interface IGenerator {
      * Get the type of this IGenerator
      * @return A String representing the type of this IGenerator
      */
-    public String getType();
+    public Game.RESOURCE_TYPES getType();
 
 }

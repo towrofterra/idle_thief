@@ -3,13 +3,13 @@
  */
 public class Generator implements IGenerator {
 
-    private final String type;
+    private final Game.RESOURCE_TYPES type;
 
-    public Generator(String type) {
+    public Generator(Game.RESOURCE_TYPES type) {
         this.type = type;
     }
 
-    public String getType() {
+    public Game.RESOURCE_TYPES getType() {
         return this.type;
     }
 
