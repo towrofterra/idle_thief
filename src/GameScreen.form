@@ -28,7 +28,7 @@
               <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <actionCommand value="steal-10"/>
+              <actionCommand value="steal-cash-10"/>
               <text value="$10"/>
             </properties>
           </component>
@@ -43,7 +43,7 @@
               <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <actionCommand value="steal-5"/>
+              <actionCommand value="steal-cash-5"/>
               <text value="$5"/>
             </properties>
           </component>
@@ -77,6 +77,7 @@
               <grid row="5" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <actionCommand value="buy-cash-100-cash-1"/>
               <text value="$100"/>
             </properties>
           </component>
@@ -108,7 +109,7 @@
             </constraints>
             <properties>
               <horizontalAlignment value="4"/>
-              <text value="Cash/s"/>
+              <text value="Cash/tick"/>
             </properties>
           </component>
           <component id="a27d1" class="javax.swing.JLabel" binding="num_gens">
@@ -142,7 +143,7 @@
               <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Buy a Cash Printing Machine"/>
+              <text value="Buy a Cash Printing Machine (1$/t)"/>
             </properties>
           </component>
           <component id="8cc7" class="javax.swing.JLabel">
@@ -150,15 +151,16 @@
               <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Hire a Pickpocket"/>
+              <text value="Hire a Pickpocket (5$/t)"/>
             </properties>
           </component>
-          <component id="ffcee" class="javax.swing.JButton" binding="$500Button" default-binding="true">
+          <component id="ffcee" class="javax.swing.JButton" binding="$1000Button" default-binding="true">
             <constraints>
               <grid row="6" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="$500"/>
+              <actionCommand value="buy-cash-1000-cash-5"/>
+              <text value="$1000"/>
             </properties>
           </component>
           <component id="972ec" class="javax.swing.JLabel">
@@ -166,7 +168,7 @@
               <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Build a Fake Toll Booth (+city guard bribe upgrade)"/>
+              <text value="Build a Fake Toll Booth (+city guard bribe upgrade) (100$/t)"/>
               <toolTipText value="Wouldn't it be nice to be able to control both entrance and exit from the main street...?"/>
             </properties>
           </component>
@@ -175,6 +177,7 @@
               <grid row="7" column="4" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <actionCommand value="buy-cash-50000-cash-100"/>
               <text value="$50,000"/>
             </properties>
           </component>
@@ -247,7 +250,7 @@
               <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <actionCommand value="steal-1"/>
+              <actionCommand value="steal-cash-1"/>
               <hideActionText value="false"/>
               <text value="$1"/>
             </properties>

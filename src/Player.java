@@ -11,7 +11,7 @@ public class Player {
 
     String name;
     private HashMap<Game.RESOURCE_TYPES, Integer> resources;
-    private HashMap<IGenerator, Integer> generators;
+    private HashMap<Game.RESOURCE_TYPES, Integer> generators;
 
     ///////////////////////
     /// GETTERS/SETTERS ///
@@ -41,11 +41,11 @@ public class Player {
         this.resources = resources;
     }
 
-    private HashMap<IGenerator, Integer> getGenerators() {
+    private HashMap<Game.RESOURCE_TYPES, Integer> getGenerators() {
         return generators;
     }
 
-    private void setGenerators(HashMap<IGenerator, Integer> generators) {
+    private void setGenerators(HashMap<Game.RESOURCE_TYPES, Integer> generators) {
         this.generators = generators;
     }
 
@@ -79,9 +79,9 @@ public class Player {
         // Add player name & Generator heading
         StringBuilder str = new StringBuilder("Player name: " + getName() + "\nGenerators:\n");
         // Add generator info
-        for (IGenerator gen : generators.keySet()) {
+        for (Game.RESOURCE_TYPES gen : generators.keySet()) {
             int numGens = generators.get(gen);
-            str.append("\t").append(gen.getType()).append(": ").append(numGens).append("\n");
+            str.append("\t").append(gen).append(": ").append(numGens).append("\n");
         }
         // Add resource info
         str.append("Resources:\n");
@@ -100,20 +100,20 @@ public class Player {
         this.generators = new HashMap<>();
     }
 
-    /**
-     * Adds the given generator to this Player's list of generators
-     * If it already exists, increments the number of generators
-     *
-     * @param generator The generator to be added.
-     */
-    public void addGenerator(IGenerator generator) {
-        if (this.generators.containsKey(generator)) {
-            int currNumGens = this.generators.get(generator);
-            this.generators.put(generator, currNumGens + 1);
-        } else {
-            this.generators.put(generator, 1);
-        }
-    }
+//    /**
+//     * Adds the given generator to this Player's list of generators
+//     * If it already exists, increments the number of generators
+//     *
+//     * @param generator The generator to be added.
+//     */
+//    public void addGenerator(IGenerator generator) {
+//        if (this.generators.containsKey(generator)) {
+//            int currNumGens = this.generators.get(generator);
+//            this.generators.put(generator, currNumGens + 1);
+//        } else {
+//            this.generators.put(generator, 1);
+//        }
+//    }
 
     /**
      * Adds the given generator to this Player's list of generators the given number of times
@@ -122,14 +122,17 @@ public class Player {
      * @param generator The generator to be added.
      * @param num       The number of times to add the generator.
      */
-    public void addGenerators(IGenerator generator, int num) {
-        if (this.generators.containsKey(generator)) {
-            int currNumGens = this.generators.get(generator);
-            this.generators.put(generator, currNumGens + num);
-        } else {
-            this.generators.put(generator, num);
+    public void addGenerators(Game.RESOURCE_TYPES resourceType, int num) {
+        for (Game.RESOURCE_TYPES existingGenerator : this.generators.keySet()) {
+            if (existingGenerator.equals(resourceType)) {
+                int currNumGens = this.generators.get(resourceType);
+                this.generators.put(resourceType, currNumGens + num);
+                return;
+            }
         }
+        this.generators.put(resourceType, num);
     }
+
 
     /**
      * Adds the given number of resources to this player
@@ -147,19 +150,26 @@ public class Player {
     }
 
     /**
+     * Removes the given number of resources to this player.
+     *
+     * @param resource The resource to remove.
+     * @param num      The amount to remove.
+     */
+    public void removeResources(Game.RESOURCE_TYPES resource, int num) {
+        if (this.resources.containsKey(resource)) {
+            int currNumResources = this.getResourceStatus(resource);
+            this.resources.put(resource, currNumResources - num);
+        }
+    }
+
+    /**
      * Gets the number of generators for the given resource this player has
      *
      * @param resource The generator type to find
      * @return An int representing the number of generators this Player has of the given resource.
      */
     public int getNumGens(Game.RESOURCE_TYPES resource) {
-        Generator aux_gen = new Generator(resource);
-        for (IGenerator gen : this.generators.keySet()) {
-            if (gen.equals(aux_gen)) {
-                return this.generators.get(gen);
-            }
-        }
-        return 0;
+        return this.generators.getOrDefault(resource, 0);
     }
 
     /**
@@ -182,8 +192,8 @@ public class Player {
      */
     public void tick() {
         // Each generator adds 1 to the relevant resource
-        for (IGenerator generator : this.generators.keySet()) {
-            Game.RESOURCE_TYPES type = generator.getType();
+        for (Game.RESOURCE_TYPES generator : this.generators.keySet()) {
+            Game.RESOURCE_TYPES type = generator;
 
             // If the player already has the resource
             if (this.resources.containsKey(type)) {

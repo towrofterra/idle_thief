@@ -24,7 +24,7 @@ public class Game implements ActionListener {
     private JButton steal1;
     private JButton steal5;
     private JButton steal10;
-    private JButton $500Button;
+    private JButton $1000Button;
     private JButton $50000Button;
     private JButton $XButton;
     private JButton $10000Button;
@@ -40,6 +40,7 @@ public class Game implements ActionListener {
     //////////////////
     // CONSTRUCTORS //
     //////////////////
+
     /**
      * Convenience default constructor
      */
@@ -72,6 +73,9 @@ public class Game implements ActionListener {
         steal1.addActionListener(this);
         steal5.addActionListener(this);
         steal10.addActionListener(this);
+        $100Button.addActionListener(this);
+        $1000Button.addActionListener(this);
+        $50000Button.addActionListener(this);
 
         frame.setContentPane(this.rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,19 +103,37 @@ public class Game implements ActionListener {
         String[] fullActionCommand = e.getActionCommand().split("-");
         switch (fullActionCommand[0].toLowerCase()) {
             case "steal":
-                util.debug("STOLE");
-                addResources(this.player, RESOURCE_TYPES.CASH, Integer.decode(fullActionCommand[1]));
+                RESOURCE_TYPES resource = RESOURCE_TYPES.valueOf(fullActionCommand[1].toUpperCase());
+                int num = Integer.decode(fullActionCommand[2]);
+                addResources(this.player, resource, num);
+                // cooldown
+                break;
+            case "buy":
+                RESOURCE_TYPES price_resource = RESOURCE_TYPES.valueOf(fullActionCommand[1].toUpperCase());
+                int price_num = Integer.decode(fullActionCommand[2]);
+                RESOURCE_TYPES reward_resource = RESOURCE_TYPES.valueOf(fullActionCommand[3].toUpperCase());
+                int reward_num = Integer.decode(fullActionCommand[4]);
+                if(price_num > this.player.getResourceStatus(price_resource)) {
+                    util.debug("PLAYER CANNOT AFFORD ".concat(fullActionCommand[4]).concat(" ".concat(price_resource.toString())));
+                    return;
+                }
+                // Payment
+                this.player.removeResources(price_resource,price_num);
+
+                // Getting the generators
+                addGenerators(player, reward_resource, reward_num);
                 break;
         }
     }
 
     private void handleSteal(int value, int cooldown) {
-        
+
     }
 
     ////////////
     //  TIME  //
     ////////////
+
     /**
      * Moves this Game 1 tick forward
      */
@@ -155,13 +177,16 @@ public class Game implements ActionListener {
     }
 
 
-
     ////////////////////
     // PLAYER CONTROL //
     ////////////////////
 
     public void addResources(Player player, RESOURCE_TYPES resourceType, int num) {
         player.addResources(resourceType, num);
+    }
+
+    public void addGenerators(Player player, RESOURCE_TYPES resourceType, int numGens) {
+        player.addGenerators(resourceType, numGens);
     }
 
     //////////
