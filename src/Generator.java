@@ -15,6 +15,6 @@ public class Generator implements IGenerator {
 
     @Override
     public boolean equals(Object anObject) {
-        return anObject instanceof Generator && this.getType().equals(((Generator)anObject).getType());
+        return anObject instanceof Generator && this.getType().equals(((Generator) anObject).getType());
     }
 }

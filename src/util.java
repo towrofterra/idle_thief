@@ -1,6 +1,6 @@
 public class util {
     static void debug(String message) {
-        boolean debug = true;
+        boolean debug = false;
         if (debug) {
             System.out.println(message);
         }

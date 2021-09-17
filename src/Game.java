@@ -5,15 +5,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Game implements ActionListener {
+
     //////////////
     //  FIELDS  //
     //////////////
+    private final Player player;
     private int tick = 0;
-    private Player player;
-
-    public enum RESOURCE_TYPES {
-        CASH
-    };
+    private boolean debug = false;
 
     /////////////////
     // SWING STUFF //
@@ -39,6 +37,23 @@ public class Game implements ActionListener {
     private JLabel tickVal;
     private JLabel num_gens;
 
+    //////////////////
+    // CONSTRUCTORS //
+    //////////////////
+    /**
+     * Convenience default constructor
+     */
+    public Game() {
+        this.player = new Player();
+    }
+
+    /**
+     * Construct a game with the given player
+     */
+    public Game(Player player) {
+        this.player = player;
+    }
+
     /**
      * Handles swing window setup
      */
@@ -55,8 +70,8 @@ public class Game implements ActionListener {
 
         // Buttons
         steal1.addActionListener(this);
-
-
+        steal5.addActionListener(this);
+        steal10.addActionListener(this);
 
         frame.setContentPane(this.rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,37 +90,30 @@ public class Game implements ActionListener {
         this.tickVal.setText(Integer.toString(getCurrTick()));
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e);
-        this.addResources(RESOURCE_TYPES.CASH, 10);
+        // Get the ActionCommand from the ActionEvent
+        // This holds the string containing the command for the given button
+        // e.g. steal-5-10, would mean steal $5 with a 10 second cooldown
+        String[] fullActionCommand = e.getActionCommand().split("-");
+        switch (fullActionCommand[0].toLowerCase()) {
+            case "steal":
+                util.debug("STOLE");
+                addResources(this.player, RESOURCE_TYPES.CASH, Integer.decode(fullActionCommand[1]));
+                break;
+        }
     }
 
-
-
-    //////////////////
-    // CONSTRUCTORS //
-    //////////////////
-    /**
-     * Convenience default constructor
-     */
-    public Game() {
-        this.player = new Player();
-    }
-
-    /**
-     * Construct a game with the given player
-     */
-    public Game(Player player) {
-        this.player = player;
+    private void handleSteal(int value, int cooldown) {
+        
     }
 
     ////////////
     //  TIME  //
     ////////////
-
     /**
-     * Moves this game 1 tick forward
+     * Moves this Game 1 tick forward
      */
     public void tick() {
         // Manage local tick value
@@ -116,6 +124,7 @@ public class Game implements ActionListener {
         this.updateGUI();
     }
 
+
     /**
      * @return The current tick of this Game
      */
@@ -125,6 +134,7 @@ public class Game implements ActionListener {
 
     /**
      * Start the global timer
+     *
      * @throws IllegalStateException If the timer has already been started
      */
     public void startTheClock() throws IllegalStateException {
@@ -135,7 +145,7 @@ public class Game implements ActionListener {
         }
 
         // Starts up a timer every /period/ms
-        long period = 1000;
+        long period = 100;
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -144,12 +154,25 @@ public class Game implements ActionListener {
         }, 0, period);
     }
 
+
+
     ////////////////////
     // PLAYER CONTROL //
     ////////////////////
 
-    public void addResources(RESOURCE_TYPES resourceType, int num) {
-        this.player.addResources(resourceType, num);
+    public void addResources(Player player, RESOURCE_TYPES resourceType, int num) {
+        player.addResources(resourceType, num);
     }
+
+    //////////
+    // UTIL //
+    //////////
+
+
+    public enum RESOURCE_TYPES {
+        CASH
+    }
+
+
 }
 

@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 /**
  * A Player has Resources & Generators
  */
@@ -8,13 +9,29 @@ public class Player {
     /// FIELDS ///
     //////////////
 
+    String name;
     private HashMap<Game.RESOURCE_TYPES, Integer> resources;
     private HashMap<IGenerator, Integer> generators;
-    String name;
 
     ///////////////////////
     /// GETTERS/SETTERS ///
     ///////////////////////
+
+    /**
+     * Default Player constructor
+     */
+    public Player() {
+        this.name = "";
+        zeroResourcesAndGenerators();
+    }
+
+    /**
+     * Player constructor with name
+     */
+    public Player(String name) {
+        this.name = name;
+        zeroResourcesAndGenerators();
+    }
 
     private HashMap<Game.RESOURCE_TYPES, Integer> getResources() {
         return resources;
@@ -32,32 +49,16 @@ public class Player {
         this.generators = generators;
     }
 
+    ////////////////////
+    /// CONSTRUCTORS ///
+    ////////////////////
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    ////////////////////
-    /// CONSTRUCTORS ///
-    ////////////////////
-
-    /**
-     * Default Player constructor
-     */
-    public Player() {
-        this.name = "";
-        zeroResourcesAndGenerators();
-    }
-
-    /**
-     * Player constructor with name
-     */
-    public Player(String name) {
-        this.name = name;
-        zeroResourcesAndGenerators();
     }
 
     ///////////////
