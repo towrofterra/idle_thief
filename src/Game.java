@@ -104,8 +104,8 @@ public class Game implements ActionListener {
         switch (fullActionCommand[0].toLowerCase()) {
             case "steal":
                 RESOURCE_TYPES resource = RESOURCE_TYPES.valueOf(fullActionCommand[1].toUpperCase());
-                int num = Integer.decode(fullActionCommand[2]);
-                addResources(this.player, resource, num);
+                int num_resources = Integer.decode(fullActionCommand[2]);
+                addResources(this.player, resource, num_resources);
                 // cooldown
                 break;
             case "buy":
@@ -113,15 +113,24 @@ public class Game implements ActionListener {
                 int price_num = Integer.decode(fullActionCommand[2]);
                 RESOURCE_TYPES reward_resource = RESOURCE_TYPES.valueOf(fullActionCommand[3].toUpperCase());
                 int reward_num = Integer.decode(fullActionCommand[4]);
+
                 if(price_num > this.player.getResourceStatus(price_resource)) {
                     util.debug("PLAYER CANNOT AFFORD ".concat(fullActionCommand[4]).concat(" ".concat(price_resource.toString())));
                     return;
                 }
+
                 // Payment
                 this.player.removeResources(price_resource,price_num);
 
                 // Getting the generators
                 addGenerators(player, reward_resource, reward_num);
+                int new_price = price_num * 2;
+                String price_resource_str = price_resource.toString().concat("-");
+                String new_action_command = "buy-".concat(price_resource_str).concat(Integer.toString(new_price))
+                        .concat("-").concat(reward_resource.toString().concat("-").concat(Integer.toString(reward_num)));
+                JButton button = (JButton)e.getSource();
+                button.setActionCommand(new_action_command);
+                button.setText("$" + new_price);
                 break;
         }
     }
